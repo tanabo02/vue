@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>猫の画像ギャラリー</title>
+  <style>
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">猫の画像ギャラリー 🐱</h1>
+  <button onclick="loadCat()">新しい猫を見る</button>
+  <img id="catImage" src="" alt="ランダムな猫の画像が表示されます">
+
+  <script>
+    async function loadCat() {
+      try {
+        const response = await fetch('https://api.thecatapi.com/v1/images/search');
+        const data = await response.json();
+        document.getElementById('catImage').src = data[0].url;
+      } catch (error) {
+        console.error('猫画像の取得に失敗しました:', error);
+      }
+    }
+
+    // ページ読み込み時に猫画像を表示
+    loadCat();
+  </script>
+</body>
+</html>

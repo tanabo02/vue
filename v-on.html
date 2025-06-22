@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Vue.js のサンプル</title>
+    <script src="https://unpkg.com/vue@3.5.0/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <h1>Vue3</h1>
+    <div id="app">
+      <button v-on:click = "onClick">マウスをクリック</button>
+	  <p>{{now}}</p>
+    </div>
+    <script>
+	const appdata= {
+      data (){
+		return{
+			now:''
+		};
+	},
+	methods: {
+		onClick() {
+			this.now = new Date().toLocaleDateString('ja-JP');
+		console.log(this.now);
+	  }
+	}
+	};
+   Vue.createApp(appdata).mount('#app')
+    </script>
+  </body>
+</html>
